@@ -1,0 +1,39 @@
+openapi: "3.0.0"
+info: { version: 0.1.1, title: myservice}
+paths:
+    /signup:
+        summary: "Sign up for the service"
+        post:
+            operationId: "sign-up"
+            summary: "sign up"
+            requestBody:
+                description: "Username and Password"
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/SignupInput"
+            responses:
+                '200':
+                    description: |
+                        Login successful
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/SignupOutput"
+components:
+    schemas:
+        SignupInput:
+            type: "object"
+            required: ["username", "password"]
+            properties:
+                username:
+                     type: "string"
+                password:
+                     type: "string"
+        SignupOutput:
+            type: "object"
+            required: ["message"]
+            properties:
+                message:
+                     type: "string"                     
