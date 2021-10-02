@@ -388,6 +388,18 @@ func parseParamValidations(param *Param, schema Any) {
 		}
 	}
 
+	if param.IsArray {
+		if def, ok := schema.Get("uniqueItems"); ok {
+			param.UniqueItems = def.Bool()
+		}
+		if min, ok := schema.Get("minItems"); ok {
+			param.MinItems = min.Int64()
+		}
+		if max, ok := schema.Get("maxItems"); ok {
+			param.MaxItems = max.Int64()
+		}
+	}
+
 	if reqIf, ok := schema.Get("x-required-if"); ok {
 		toBe, _ := reqIf.Get("to_be")
 		param.RequiredIf = RequiredIf{

@@ -132,8 +132,11 @@ type Param struct {
 	In              string
 	Tags            string
 	Default         interface{}
+	MinItems        interface{}
+	MaxItems        interface{}
 	Minimum         interface{}
 	Maximum         interface{}
+	UniqueItems     bool
 	MinLength       interface{}
 	MaxLength       interface{}
 	ValidURL        bool
